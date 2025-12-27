@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Winter Finance Bootcamp | Amartya Finance Society - IITMBS</title>
+    <meta name="description" content="Join our 5-week intensive Winter School Bootcamp on Finance. Learn from industry experts and enhance your financial knowledge.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'terminal-green': '#00ff41',
+                        'terminal-red': '#ff0040',
+                        'terminal-amber': '#ffaa00',
+                        'terminal-blue': '#00d4ff',
+                        'terminal-gold': '#ffd700',
+                        'terminal-bg': '#0a0e27',
+                        'terminal-bg-light': '#1a1a2e',
+                    },
+                    fontFamily: {
+                        'mono': ['JetBrains Mono', 'monospace'],
+                        'heading': ['Space Mono', 'monospace'],
+                    },
+                    animation: {
+                        'blink': 'blink 1s step-end infinite',
+                        'ticker': 'ticker 40s linear infinite',
+                    },
+                    keyframes: {
+                        blink: {
+                            '0%, 100%': { opacity: '1' },
+                            '50%': { opacity: '0' }
+                        },
+                        ticker: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-50%)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0a0e27;
+            color: #e0e0e0;
+            font-family: 'JetBrains Mono', monospace;
+            overflow-x: hidden;
+        }
+        .terminal-text {
+            color: #00ff41;
+            text-shadow: 0 0 5px rgba(0, 255, 65, 0.5);
+        }
+        .ticker-container {
+            white-space: nowrap;
+            display: inline-block;
+            animation: ticker 40s linear infinite;
+        }
+        .ticker-item {
+            display: inline-block;
+            margin: 0 2rem;
+            color: #00ff41;
+        }
+        .card {
+            background: rgba(10, 14, 39, 0.7);
+            border: 1px solid rgba(0, 255, 65, 0.2);
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 255, 65, 0.1);
+            border-color: #00ff41;
+        }
+        .btn-primary {
+            background: linear-gradient(45deg, #00ff41, #00d4ff);
+            color: #000;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 65, 0.4);
+        }
+        .capstone-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: #ffd700;
+            color: #000;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            transform: rotate(15deg);
+            box-shadow: 0 2px 10px rgba(255, 215, 0, 0.5);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: rotate(15deg) scale(1); }
+            50% { transform: rotate(15deg) scale(1.05); }
+            100% { transform: rotate(15deg) scale(1); }
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Ticker -->
+    <div class="bg-black py-2 overflow-hidden">
+        <div class="ticker-container">
+            <span class="ticker-item">FIN101 ↑2.5%</span>
+            <span class="ticker-item">EQUITY ↑5.2%</span>
+            <span class="ticker-item">FINTECH ↑8.1%</span>
+            <span class="ticker-item">BOOTCAMP ↑15.7%</span>
+            <span class="ticker-item">AMARTYA ↑12.3%</span>
+            <!-- Duplicate for seamless loop -->
+            <span class="ticker-item">FIN101 ↑2.5%</span>
+            <span class="ticker-item">EQUITY ↑5.2%</span>
+            <span class="ticker-item">FINTECH ↑8.1%</span>
+            <span class="ticker-item">BOOTCAMP ↑15.7%</span>
+            <span class="ticker-item">AMARTYA ↑12.3%</span>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="relative overflow-hidden">
+        <div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
+        <div class="container mx-auto px-4 py-20 md:py-32 relative z-10">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4 terminal-text font-heading">WINTER FINANCE BOOTCAMP</h1>
+                <p class="text-xl md:text-2xl mb-8 text-terminal-blue">Amartya Finance Society - IITMBS</p>
+                <p class="text-lg mb-8 max-w-2xl mx-auto">January 2, 2025 – February 5, 2025 | 100% Online</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#register" class="btn-primary px-8 py-3 rounded-md font-bold">REGISTER NOW</a>
+                    <a href="#schedule" class="px-8 py-3 border border-terminal-green rounded-md hover:bg-terminal-green hover:bg-opacity-10 transition-colors">VIEW SCHEDULE</a>
+                </div>
+                
+                <!-- Stats -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
+                    <div class="text-center">
+                        <div class="text-3xl font-bold terminal-text">5</div>
+                        <div class="text-sm uppercase tracking-wider">Weeks</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold terminal-text">20+</div>
+                        <div class="text-sm uppercase tracking-wider">Topics</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold terminal-text">100%</div>
+                        <div class="text-sm uppercase tracking-wider">Online</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold terminal-text">5</div>
+                        <div class="text-sm uppercase tracking-wider">Case Studies</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Program Overview -->
+    <section id="overview" class="py-16 bg-terminal-bg-light">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12 text-center terminal-text">PROGRAM PORTFOLIO</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Week 1 -->
+                <div class="card p-6 rounded-lg relative">
+                    <div class="flex items-center mb-4">
+                        <span class="terminal-text font-bold text-xl mr-2">WEEK1</span>
+                        <span class="text-xs bg-terminal-green bg-opacity-20 text-terminal-green px-2 py-1 rounded">FOUNDATIONS</span>
+                    </div>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-start">
+                            <span class="terminal-text mr-2">></span>
+                            <span>Introduction to Finance</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="terminal-text mr-2">></span>
+                            <span>Financial Systems</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-terminal-amber mr-2">★</span>
+                            <span>Mini Case Study</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-terminal-blue mr-2">?</span>
+                            <span>Quiz Window</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Week 2 -->
+                <div class="card p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <span class="terminal-text font-bold text-xl mr-2">WEEK2</span>
+                        <span class="text-xs bg-terminal-green bg-opacity-20 text-terminal-green px-2 py-1 rounded">TIME VALUE & RISK</span>
+                    </div>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-start">
+                            <span class="terminal-text mr-2">></span>
+                            <span>Time Value of Money</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="terminal-text mr-2">></span>
+                            <span>Present & Future Value</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="terminal-text mr-2">></span>
+                            <span>Risk and Return</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-terminal-amber mr-2">★</span>
+                            <span>Mini Case Study</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-terminal-blue mr-2">?</span>
+                            <span>Quiz Window</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Week 3 -->
+                <div class="card p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <span class="terminal-text font-bold text-xl mr-2">WEEK3</span>
+                        <span class="text-xs bg-terminal-green bg-opacity-20 text-terminal-green px-2 py-1 rounded">MARKETS & INSTRUMENTS</span>
+                    </div>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-start">
+                            <span class="terminal-text mr-2">></span>
+                            <span>Financial Markets</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="terminal-text mr-2">></span>
+                            <span>Equity Markets</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="terminal-text mr-2">></span>
+                            <span>Market Participants</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-terminal-amber mr-2">★</span>
+                            <span>Mini Case Study</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-terminal-blue mr-2">?</span>
+                            <span>Quiz Window</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Week 4 -->
+                <div class="card p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <span class="terminal-text font-bold text-xl mr-2">WEEK4</span>
+                        <span class="text-xs bg-terminal-green bg-opacity-20 text-terminal-green px-2 py-1 rounded">ADVANCED TOPICS</span>
+                    </div>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-start">
+                            <span class="terminal-text mr-2">></span>
+                            <span>Commodities & Currencies</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="terminal-text mr-2">></span>
+                            <span>Investing Basics</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="terminal-text mr-2">></span>
+                            <span>Corporate Financing</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-terminal-amber mr-2">★</span>
+                            <span>Mini Case Study</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-terminal-blue mr-2">?</span>
+                            <span>Quiz Window</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Week 5 -->
+                <div class="card p-6 rounded-lg relative col-span-1 md:col-span-2 lg:col-span-1">
+                    <div class="flex items-center mb-4">
+                        <span class="terminal-text font-bold text-xl mr-2">WEEK5</span>
+                        <span class="text-xs bg-terminal-red bg-opacity-20 text-terminal-red px-2 py-1 rounded">FINTECH & STRATEGY</span>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <ul class="space-y-2 text-sm">
+                                <li class="flex items-start">
+                                    <span class="terminal-text mr-2">></span>
+                                    <span>Business Models in Finance</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="terminal-text mr-2">></span>
+                                    <span>Introduction to FinTech</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="terminal-text mr-2">></span>
+                                    <span>Financial Modeling</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-terminal-amber mr-2">★</span>
+                                    <span>Mini Case Study</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul class="space-y-2 text-sm">
+                                <li class="flex items-start">
+                                    <span class="text-terminal-blue mr-2">?</span>
+                                    <span>Quiz Window</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-terminal-gold mr-2">✦</span>
+                                    <span class="font-medium">Capstone Project</span>
+                                    <span class="text-xs bg-terminal-gold bg-opacity-20 text-terminal-gold px-2 py-0.5 rounded ml-2">OPTIONAL</span>
+                                </li>
+                            </ul>
+                            <div class="mt-4 p-3 bg-terminal-bg rounded border border-terminal-gold border-opacity-30">
+                                <div class="text-terminal-gold text-sm font-medium mb-1">Capstone Project (Optional)</div>
+                                <p class="text-xs text-gray-300">Enhance your certification with a practical project. Showcase your skills and build your portfolio.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certification -->
+    <section class="py-16 bg-terminal-bg">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12 text-center terminal-text">CERTIFICATION REQUIREMENTS</h2>
+            
+            <div class="max-w-2xl mx-auto bg-terminal-bg-light p-8 rounded-lg border border-terminal-green border-opacity-20">
+                <h3 class="text-xl font-bold mb-6 flex items-center">
+                    <span class="terminal-text mr-2">$</span> Certification Criteria
+                </h3>
+                
+                <ul class="space-y-4">
+                    <li class="flex items-start">
+                        <span class="text-terminal-green mr-3 mt-1">✓</span>
+                        <div>
+                            <div class="font-medium">70% Minimum Attendance</div>
+                            <p class="text-sm text-gray-400">Attend at least 70% of all sessions</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-terminal-green mr-3 mt-1">✓</span>
+                        <div>
+                            <div class="font-medium">Quiz Participation</div>
+                            <p class="text-sm text-gray-400">Complete all weekly quizzes</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-terminal-gold mr-3 mt-1">★</span>
+                        <div>
+                            <div class="font-medium">Capstone Project <span class="text-xs bg-terminal-gold bg-opacity-20 text-terminal-gold px-2 py-0.5 rounded ml-2">OPTIONAL</span></div>
+                            <p class="text-sm text-gray-400">Enhance your certification with practical experience</p>
+                        </div>
+                    </li>
+                </ul>
+                
+                <div class="mt-8 p-4 bg-terminal-bg rounded border border-terminal-green border-opacity-20">
+                    <div class="flex items-start">
+                        <span class="text-terminal-blue mr-2 mt-1">ℹ</span>
+                        <div>
+                            <p class="text-sm">The capstone project is optional but highly recommended for those looking to apply their knowledge and enhance their portfolio.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="register" class="py-16 bg-gradient-to-r from-terminal-bg to-terminal-bg-light">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-6 terminal-text">READY TO LAUNCH YOUR FINANCE JOURNEY?</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Join the Winter Finance Bootcamp and gain practical financial knowledge from industry experts.</p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#" class="btn-primary px-8 py-4 rounded-md font-bold text-lg">REGISTER NOW</a>
+                <a href="#overview" class="px-8 py-4 border border-terminal-green rounded-md hover:bg-terminal-green hover:bg-opacity-10 transition-colors text-lg">LEARN MORE</a>
+            </div>
+            
+            <div class="mt-12 pt-8 border-t border-terminal-green border-opacity-20">
+                <h3 class="text-xl font-bold mb-4">Organized by</h3>
+                <div class="text-2xl font-bold terminal-text">Amartya Finance Society - IITMBS</div>
+                <p class="mt-2 text-gray-400">Empowering the next generation of finance professionals</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <div class="text-xl font-bold terminal-text">Winter Finance Bootcamp</div>
+                    <p class="text-sm text-gray-400">January 2 - February 5, 2025</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-terminal-green transition-colors">Terms</a>
+                    <a href="#" class="text-gray-400 hover:text-terminal-green transition-colors">Privacy</a>
+                    <a href="#" class="text-gray-400 hover:text-terminal-green transition-colors">Contact</a>
+                </div>
+            </div>
+            <div class="mt-8 pt-6 border-t border-gray-800 text-center text-sm text-gray-500">
+                © 2024 Amartya Finance Society - IITMBS. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple countdown timer
+        function updateCountdown() {
+            const now = new Date();
+            const bootcampStart = new Date('2025-01-02T00:00:00');
+            const diffTime = bootcampStart - now;
+            
+            if (diffTime <= 0) {
+                document.getElementById('countdown').innerHTML = 'Bootcamp in progress!';
+                return;
+            }
+            
+            const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+            const diffHours = Math.floor((diffTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            
+            document.getElementById('countdown').innerHTML = `Starts in: ${diffDays}d ${diffHours}h`;
+        }
+        
+        // Update countdown every minute
+        updateCountdown();
+        setInterval(updateCountdown, 60000);
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
