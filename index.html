@@ -28,7 +28,7 @@
                     },
                     animation: {
                         'blink': 'blink 1s step-end infinite',
-                        'ticker': 'ticker 40s linear infinite',
+                        'ticker': 'ticker 30s linear infinite',
                     },
                     keyframes: {
                         blink: {
@@ -58,12 +58,23 @@
         .ticker-container {
             white-space: nowrap;
             display: inline-block;
-            animation: ticker 40s linear infinite;
+            animation: ticker 30s linear infinite;
         }
         .ticker-item {
             display: inline-block;
-            margin: 0 2rem;
+            margin: 0 3rem;
             color: #00ff41;
+            font-weight: bold;
+            text-shadow: 0 0 3px rgba(0, 255, 65, 0.8);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        @keyframes glow {
+            from { text-shadow: 0 0 3px rgba(0, 255, 65, 0.8); }
+            to { text-shadow: 0 0 8px rgba(0, 255, 65, 1), 0 0 12px rgba(0, 255, 65, 0.6); }
+        }
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
         .card {
             background: rgba(10, 14, 39, 0.7);
@@ -104,11 +115,45 @@
             50% { transform: rotate(15deg) scale(1.05); }
             100% { transform: rotate(15deg) scale(1); }
         }
+        .chart-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .chart-line {
+            stroke: #00ff41;
+            stroke-width: 2;
+            fill: none;
+            filter: drop-shadow(0 0 3px rgba(0, 255, 65, 0.5));
+            animation: drawLine 3s ease-in-out infinite alternate;
+        }
+        .chart-area {
+            fill: url(#chartGradient);
+            opacity: 0.3;
+            animation: fadeInOut 4s ease-in-out infinite;
+        }
+        @keyframes drawLine {
+            0% { stroke-dashoffset: 1000; }
+            100% { stroke-dashoffset: 0; }
+        }
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 0.4; }
+        }
+        .hero-content {
+            position: relative;
+            z-index: 10;
+        }
     </style>
 </head>
 <body class="min-h-screen">
     <!-- Ticker -->
-    <div class="bg-black py-2 overflow-hidden">
+    <div class="bg-black py-2 overflow-hidden sticky top-0 z-50 border-b border-terminal-green border-opacity-20">
         <div class="ticker-container">
             <span class="ticker-item">FIN101 ↑2.5%</span>
             <span class="ticker-item">EQUITY ↑5.2%</span>
@@ -127,13 +172,43 @@
     <!-- Hero Section -->
     <header class="relative overflow-hidden">
         <div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
+        
+        <!-- Animated Chart Background -->
+        <div class="chart-background">
+            <svg width="100%" height="100%" viewBox="0 0 1200 600" preserveAspectRatio="none">
+                <defs>
+                    <linearGradient id="chartGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color:#00ff41;stop-opacity:0.6" />
+                        <stop offset="100%" style="stop-color:#00ff41;stop-opacity:0" />
+                    </linearGradient>
+                </defs>
+                
+                <!-- Chart Area -->
+                <path class="chart-area" d="M 0,400 Q 200,350 400,300 T 800,250 Q 1000,200 1200,150 L 1200,600 L 0,600 Z" />
+                
+                <!-- Chart Line -->
+                <path class="chart-line" d="M 0,400 Q 200,350 400,300 T 800,250 Q 1000,200 1200,150" 
+                      stroke-dasharray="1000" stroke-dashoffset="1000" />
+                
+                <!-- Additional decorative lines -->
+                <path class="chart-line" d="M 0,450 L 1200,450" 
+                      stroke-dasharray="1000" stroke-dashoffset="1000" 
+                      style="animation-delay: 0.5s; opacity: 0.3;" />
+                <path class="chart-line" d="M 0,500 L 1200,500" 
+                      stroke-dasharray="1000" stroke-dashoffset="1000" 
+                      style="animation-delay: 1s; opacity: 0.3;" />
+                <path class="chart-line" d="M 0,550 L 1200,550" 
+                      stroke-dasharray="1000" stroke-dashoffset="1000" 
+                      style="animation-delay: 1.5s; opacity: 0.3;" />
+            </svg>
+        </div>
+        
         <div class="container mx-auto px-4 py-20 md:py-32 relative z-10">
-            <div class="max-w-4xl mx-auto text-center">
+            <div class="max-w-4xl mx-auto text-center hero-content">
                 <h1 class="text-4xl md:text-6xl font-bold mb-4 terminal-text font-heading">WINTER FINANCE BOOTCAMP</h1>
                 <p class="text-xl md:text-2xl mb-8 text-terminal-blue">Amartya Finance Society - IITMBS</p>
                 <p class="text-lg mb-8 max-w-2xl mx-auto">January 2, 2025 – February 5, 2025 | 100% Online</p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="#register" class="btn-primary px-8 py-3 rounded-md font-bold">REGISTER NOW</a>
                     <a href="#schedule" class="px-8 py-3 border border-terminal-green rounded-md hover:bg-terminal-green hover:bg-opacity-10 transition-colors">VIEW SCHEDULE</a>
                 </div>
                 
@@ -385,7 +460,6 @@
             <p class="text-xl mb-8 max-w-2xl mx-auto">Join the Winter Finance Bootcamp and gain practical financial knowledge from industry experts.</p>
             
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#" class="btn-primary px-8 py-4 rounded-md font-bold text-lg">REGISTER NOW</a>
                 <a href="#overview" class="px-8 py-4 border border-terminal-green rounded-md hover:bg-terminal-green hover:bg-opacity-10 transition-colors text-lg">LEARN MORE</a>
             </div>
             
