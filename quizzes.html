@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quizzes | Winter Finance Bootcamp | Amartya Finance Society - IITMBS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'terminal-green': '#00ff41',
+                        'terminal-red': '#ff0040',
+                        'terminal-amber': '#ffaa00',
+                        'terminal-blue': '#00d4ff',
+                        'terminal-gold': '#ffd700',
+                        'terminal-bg': '#0a0e27',
+                        'terminal-bg-light': '#1a1a2e',
+                    },
+                    fontFamily: {
+                        'mono': ['JetBrains Mono', 'monospace'],
+                        'heading': ['Space Mono', 'monospace'],
+                    },
+                    animation: {
+                        'blink': 'blink 1s step-end infinite',
+                        'ticker': 'ticker 30s linear infinite',
+                    },
+                    keyframes: {
+                        blink: {
+                            '0%, 100%': { opacity: '1' },
+                            '50%': { opacity: '0' }
+                        },
+                        ticker: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-50%)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0a0e27;
+            color: #e0e0e0;
+            font-family: 'JetBrains Mono', monospace;
+            overflow-x: hidden;
+        }
+        .terminal-text {
+            color: #00ff41;
+            text-shadow: 0 0 5px rgba(0, 255, 65, 0.5);
+        }
+        .ticker-container {
+            white-space: nowrap;
+            display: inline-block;
+            animation: ticker 30s linear infinite;
+        }
+        .ticker-item {
+            display: inline-block;
+            margin: 0 3rem;
+            color: #00ff41;
+            font-weight: bold;
+            text-shadow: 0 0 3px rgba(0, 255, 65, 0.8);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        @keyframes glow {
+            from { text-shadow: 0 0 3px rgba(0, 255, 65, 0.8); }
+            to { text-shadow: 0 0 8px rgba(0, 255, 65, 1), 0 0 12px rgba(0, 255, 65, 0.6); }
+        }
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .card {
+            background: rgba(10, 14, 39, 0.7);
+            border: 1px solid rgba(0, 255, 65, 0.2);
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 255, 65, 0.1);
+            border-color: #00ff41;
+        }
+        .chart-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .chart-line {
+            stroke: #00ff41;
+            stroke-width: 2;
+            fill: none;
+            filter: drop-shadow(0 0 3px rgba(0, 255, 65, 0.5));
+            animation: drawLine 3s ease-in-out infinite alternate;
+        }
+        .chart-area {
+            fill: url(#chartGradient);
+            opacity: 0.3;
+            animation: fadeInOut 4s ease-in-out infinite;
+        }
+        @keyframes drawLine {
+            0% { stroke-dashoffset: 1000; }
+            100% { stroke-dashoffset: 0; }
+        }
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 0.4; }
+        }
+        .hero-content {
+            position: relative;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Ticker -->
+    <div class="bg-black py-2 overflow-hidden sticky top-0 z-50 border-b border-terminal-green border-opacity-20">
+        <div class="ticker-container">
+            <span class="ticker-item">QUIZZES ↑2.5%</span>
+            <span class="ticker-item">ASSESSMENTS ↑5.2%</span>
+            <span class="ticker-item">FINANCE ↑8.1%</span>
+            <span class="ticker-item">BOOTCAMP ↑15.7%</span>
+            <span class="ticker-item">AMARTYA ↑12.3%</span>
+            <!-- Duplicate for seamless loop -->
+            <span class="ticker-item">QUIZZES ↑2.5%</span>
+            <span class="ticker-item">ASSESSMENTS ↑5.2%</span>
+            <span class="ticker-item">FINANCE ↑8.1%</span>
+            <span class="ticker-item">BOOTCAMP ↑15.7%</span>
+            <span class="ticker-item">AMARTYA ↑12.3%</span>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="relative overflow-hidden">
+        <div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
+        
+        <!-- Animated Chart Background -->
+        <div class="chart-background">
+            <svg width="100%" height="100%" viewBox="0 0 1200 600" preserveAspectRatio="none">
+                <defs>
+                    <linearGradient id="chartGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color:#00ff41;stop-opacity:0.6" />
+                        <stop offset="100%" style="stop-color:#00ff41;stop-opacity:0" />
+                    </linearGradient>
+                </defs>
+                
+                <!-- Chart Area -->
+                <path class="chart-area" d="M 0,400 Q 200,350 400,300 T 800,250 Q 1000,200 1200,150 L 1200,600 L 0,600 Z" />
+                
+                <!-- Chart Line -->
+                <path class="chart-line" d="M 0,400 Q 200,350 400,300 T 800,250 Q 1000,200 1200,150" 
+                      stroke-dasharray="1000" stroke-dashoffset="1000" />
+                
+                <!-- Additional decorative lines -->
+                <path class="chart-line" d="M 0,450 L 1200,450" 
+                      stroke-dasharray="1000" stroke-dashoffset="1000" 
+                      style="animation-delay: 0.5s; opacity: 0.3;" />
+                <path class="chart-line" d="M 0,500 L 1200,500" 
+                      stroke-dasharray="1000" stroke-dashoffset="1000" 
+                      style="animation-delay: 1s; opacity: 0.3;" />
+                <path class="chart-line" d="M 0,550 L 1200,550" 
+                      stroke-dasharray="1000" stroke-dashoffset="1000" 
+                      style="animation-delay: 1.5s; opacity: 0.3;" />
+            </svg>
+        </div>
+        
+        <div class="container mx-auto px-4 py-20 md:py-32 relative z-10">
+            <div class="max-w-4xl mx-auto text-center hero-content">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4 terminal-text font-heading">QUIZZES</h1>
+                <p class="text-xl md:text-2xl mb-8 text-terminal-blue">Winter Finance Bootcamp</p>
+                <p class="text-lg mb-8 max-w-2xl mx-auto">Amartya Finance Society - IITMBS</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto">
+                <div class="card p-8 rounded-lg">
+                    <h2 class="text-2xl font-bold mb-6 terminal-text">Quiz Schedule</h2>
+                    
+                    <div class="mb-8">
+                        <div class="bg-terminal-bg-light p-6 rounded-lg border border-terminal-green border-opacity-20">
+                            <h3 class="text-xl font-bold mb-4 text-terminal-amber">Important Notice</h3>
+                            <p class="text-lg mb-4">The Winter Finance Bootcamp will start from <strong>January 2nd, 2026</strong>.</p>
+                            <p class="text-lg mb-4">All quizzes and case studies will be posted from then on as the bootcamp begins.</p>
+                            <p class="text-lg">Please check back regularly for quiz assignments and assessment schedules.</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="border border-terminal-green border-opacity-20 rounded-lg p-4">
+                            <h3 class="text-terminal-green font-bold mb-2">Week 1 Quiz Window</h3>
+                            <p>January 4-5, 2026</p>
+                            <p class="text-sm text-gray-400">Topics: Introduction to Finance, Financial Systems</p>
+                        </div>
+
+                        <div class="border border-terminal-green border-opacity-20 rounded-lg p-4">
+                            <h3 class="text-terminal-green font-bold mb-2">Week 2 Quiz Window</h3>
+                            <p>January 11-12, 2026</p>
+                            <p class="text-sm text-gray-400">Topics: Time Value of Money, Present & Future Value, Risk and Return</p>
+                        </div>
+
+                        <div class="border border-terminal-green border-opacity-20 rounded-lg p-4">
+                            <h3 class="text-terminal-green font-bold mb-2">Week 3 Quiz Window</h3>
+                            <p>January 18-19, 2026</p>
+                            <p class="text-sm text-gray-400">Topics: Financial Markets, Equity Markets, Market Participants</p>
+                        </div>
+
+                        <div class="border border-terminal-green border-opacity-20 rounded-lg p-4">
+                            <h3 class="text-terminal-green font-bold mb-2">Week 4 Quiz Window</h3>
+                            <p>January 25-26, 2026</p>
+                            <p class="text-sm text-gray-400">Topics: Commodities & Currencies, Investing Basics, Corporate Financing</p>
+                        </div>
+
+                        <div class="border border-terminal-green border-opacity-20 rounded-lg p-4">
+                            <h3 class="text-terminal-green font-bold mb-2">Week 5 Quiz Window</h3>
+                            <p>February 1-2, 2026</p>
+                            <p class="text-sm text-gray-400">Topics: Business Models in Finance, FinTech, Financial Modeling</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 text-center">
+                    <a href="index.html" class="px-8 py-3 border border-terminal-green rounded-md hover:bg-terminal-green hover:bg-opacity-10 transition-colors">BACK TO HOME</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <div class="text-xl font-bold terminal-text">Winter Finance Bootcamp</div>
+                    <p class="text-sm text-gray-400">January 2 - February 5, 2026</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-terminal-green transition-colors">Terms</a>
+                    <a href="#" class="text-gray-400 hover:text-terminal-green transition-colors">Privacy</a>
+                    <a href="#" class="text-gray-400 hover:text-terminal-green transition-colors">Contact</a>
+                </div>
+            </div>
+            <div class="mt-8 pt-6 border-t border-gray-800 text-center text-sm text-gray-500">
+                © 2025 Amartya Finance Society - IITMBS. All rights reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
