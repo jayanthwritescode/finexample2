@@ -257,5 +257,252 @@
             </div>
         </div>
     </footer>
+<!-- Trading Terminal Navigation -->
+    <div id="tradingTerminal" class="fixed left-0 top-0 h-full w-64 bg-terminal-bg border-r border-terminal-green border-opacity-30 z-50 transform -translate-x-full transition-transform duration-300">
+        <!-- Terminal Header -->
+        <div class="bg-terminal-bg-light border-b border-terminal-green border-opacity-30 p-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <div class="w-2 h-2 bg-terminal-red rounded-full mr-2 animate-pulse"></div>
+                    <div class="w-2 h-2 bg-terminal-amber rounded-full mr-2 animate-pulse" style="animation-delay: 0.5s"></div>
+                    <div class="w-2 h-2 bg-terminal-green rounded-full mr-2 animate-pulse" style="animation-delay: 1s"></div>
+                    <span class="terminal-text font-mono text-sm ml-2">TRADING TERMINAL v2.0</span>
+                </div>
+                <button id="closeTerminal" class="text-terminal-green hover:text-terminal-red transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Market Ticker -->
+        <div class="bg-black p-4 border-b border-terminal-green border-opacity-20">
+            <div class="text-xs terminal-text mb-3 font-bold">MARKET OVERVIEW</div>
+            <div class="grid grid-cols-2 gap-3">
+                <div class="bg-terminal-bg-light rounded-lg p-3 border border-terminal-green border-opacity-20">
+                    <div class="flex items-center justify-between mb-1">
+                        <span class="text-xs text-gray-400 font-medium">BOOTCAMP</span>
+                        <svg class="w-3 h-3 terminal-green" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <div class="text-lg font-bold terminal-green">+15.7%</div>
+                    <div class="text-xs text-gray-500">24h Change</div>
+                </div>
+                <div class="bg-terminal-bg-light rounded-lg p-3 border border-terminal-green border-opacity-20">
+                    <div class="flex items-center justify-between mb-1">
+                        <span class="text-xs text-gray-400 font-medium">FIN101</span>
+                        <svg class="w-3 h-3 terminal-green" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <div class="text-lg font-bold terminal-green">+2.5%</div>
+                    <div class="text-xs text-gray-500">24h Change</div>
+                </div>
+                <div class="bg-terminal-bg-light rounded-lg p-3 border border-terminal-green border-opacity-20">
+                    <div class="flex items-center justify-between mb-1">
+                        <span class="text-xs text-gray-400 font-medium">EQUITY</span>
+                        <svg class="w-3 h-3 terminal-green" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <div class="text-lg font-bold terminal-green">+5.2%</div>
+                    <div class="text-xs text-gray-500">24h Change</div>
+                </div>
+                <div class="bg-terminal-bg-light rounded-lg p-3 border border-terminal-green border-opacity-20">
+                    <div class="flex items-center justify-between mb-1">
+                        <span class="text-xs text-gray-400 font-medium">FINTECH</span>
+                        <svg class="w-3 h-3 terminal-green" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <div class="text-lg font-bold terminal-green">+8.1%</div>
+                    <div class="text-xs text-gray-500">24h Change</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <div class="p-4">
+            <div class="text-xs terminal-text mb-3">TRADING DESK</div>
+            <nav class="space-y-2">
+                <a href="index.html" class="terminal-tab flex items-center p-3 rounded-lg hover:bg-terminal-bg-light border border-transparent hover:border-terminal-green border-opacity-30 text-gray-400 hover:text-terminal-green transition-all duration-200 group">
+                    <svg class="w-5 h-5 mr-3 group-hover:scale-110 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                    </svg>
+                    <div class="flex-1">
+                        <div class="font-mono text-sm">MAIN DESK</div>
+                        <div class="text-xs text-gray-400">Home Terminal</div>
+                    </div>
+                    <div class="text-xs text-gray-500">ONLINE</div>
+                </a>
+                
+                <a href="quizzes.html" class="terminal-tab flex items-center p-3 rounded-lg bg-terminal-bg-light border border-terminal-green border-opacity-50 text-terminal-green transition-all duration-200 group">
+                    <svg class="w-5 h-5 mr-3 group-hover:scale-110 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+                    </svg>
+                    <div class="flex-1">
+                        <div class="font-mono text-sm">QUIZZES</div>
+                        <div class="text-xs text-gray-400">Knowledge Assessment</div>
+                    </div>
+                    <div class="text-xs terminal-green">● ACTIVE</div>
+                </a>
+                
+                <a href="assessments.html" class="terminal-tab flex items-center p-3 rounded-lg hover:bg-terminal-bg-light border border-transparent hover:border-terminal-green border-opacity-30 text-gray-400 hover:text-terminal-green transition-all duration-200 group">
+                    <svg class="w-5 h-5 mr-3 group-hover:scale-110 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                    </svg>
+                    <div class="flex-1">
+                        <div class="font-mono text-sm">ASSESSMENTS</div>
+                        <div class="text-xs text-gray-400">Case Studies</div>
+                    </div>
+                    <div class="text-xs text-gray-500">5 FILES</div>
+                </a>
+            </nav>
+        </div>
+
+        <!-- Terminal Status -->
+        <div class="absolute bottom-0 left-0 right-0 bg-terminal-bg-light border-t border-terminal-green border-opacity-30 p-4">
+            <div class="text-xs terminal-text mb-2">SYSTEM STATUS</div>
+            <div class="space-y-1 text-xs">
+                <div class="flex justify-between">
+                    <span class="text-gray-400">Connection:</span>
+                    <span class="terminal-green">ONLINE</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-gray-400">Market:</span>
+                    <span class="terminal-green">OPEN</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-gray-400">Last Update:</span>
+                    <span class="terminal-green" id="lastUpdate">--:--:--</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terminal Toggle Button -->
+    <button id="terminalToggle" class="fixed left-4 top-1/2 -translate-y-1/2 z-40 w-12 h-12 bg-terminal-bg border-2 border-terminal-green rounded-lg flex items-center justify-center text-terminal-green shadow-lg hover:shadow-terminal-glow transition-all duration-300 hover:scale-110">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+        </svg>
+    </button>
+
+    <style>
+        #tradingTerminal {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .terminal-tab {
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .terminal-tab:hover {
+            background-color: rgba(0, 255, 65, 0.1);
+        }
+
+        .shadow-terminal-glow {
+            box-shadow: 0 0 15px rgba(0, 255, 65, 0.3);
+        }
+
+        /* Terminal open state */
+        #tradingTerminal.open {
+            transform: translateX(0);
+        }
+
+        /* Hide toggle button when terminal is open */
+        #tradingTerminal.open ~ #terminalToggle {
+            transform: translateX(-100px);
+        }
+
+        /* Custom scrollbar for terminal */
+        #tradingTerminal::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        #tradingTerminal::-webkit-scrollbar-track {
+            background: #0a0e27;
+        }
+
+        #tradingTerminal::-webkit-scrollbar-thumb {
+            background: #00ff41;
+            border-radius: 3px;
+        }
+
+        #tradingTerminal::-webkit-scrollbar-thumb:hover {
+            background: #00d4ff;
+        }
+    </style>
+
+    <script>
+        // Terminal functionality
+        const terminal = document.getElementById('tradingTerminal');
+        const terminalToggle = document.getElementById('terminalToggle');
+        const closeTerminal = document.getElementById('closeTerminal');
+        const lastUpdateElement = document.getElementById('lastUpdate');
+
+        // Toggle terminal
+        terminalToggle.addEventListener('click', () => {
+            terminal.classList.toggle('open');
+        });
+
+        closeTerminal.addEventListener('click', () => {
+            terminal.classList.remove('open');
+        });
+
+        // Update time
+        function updateTime() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('en-US', { 
+                hour12: false, 
+                hour: '2-digit', 
+                minute: '2-digit', 
+                second: '2-digit' 
+            });
+            if (lastUpdateElement) {
+                lastUpdateElement.textContent = timeString;
+            }
+        }
+
+        // Update time every second
+        updateTime();
+        setInterval(updateTime, 1000);
+
+        // Highlight active page
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            document.querySelectorAll('.terminal-tab').forEach(item => {
+                if (item.getAttribute('href') === currentPage) {
+                    item.classList.add('bg-terminal-bg-light', 'border-terminal-green', 'border-opacity-50', 'text-terminal-green');
+                    item.classList.remove('text-gray-400', 'border-transparent');
+                    
+                    // Update status to active
+                    const statusElement = item.querySelector('.text-xs:last-child');
+                    if (statusElement && !statusElement.textContent.includes('ACTIVE')) {
+                        statusElement.textContent = '● ACTIVE';
+                        statusElement.classList.add('terminal-green');
+                        statusElement.classList.remove('text-gray-500');
+                    }
+                }
+            });
+        });
+
+        // Close terminal when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!terminal.contains(e.target) && !terminalToggle.contains(e.target) && terminal.classList.contains('open')) {
+                terminal.classList.remove('open');
+            }
+        });
+
+        // Keyboard shortcut (Ctrl/Cmd + B) to toggle terminal
+        document.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'b') {
+                e.preventDefault();
+                terminal.classList.toggle('open');
+            }
+        });
+    </script>
 </body>
 </html>
